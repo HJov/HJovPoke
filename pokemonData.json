@@ -1,0 +1,69 @@
+[
+    {
+      "name": "Bulbasaur",
+      "pokedexId": 1,
+      "types": ["Grass", "Poison"],
+      "generation": 1,
+      "color": "Green",
+      "evolutionStage": 1,
+      "height": 0.7,
+      "hasMegaEvolution": false,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    },
+    {
+      "name": "Ivysaur",
+      "pokedexId": 2,
+      "types": ["Grass", "Poison"],
+      "generation": 1,
+      "color": "Green",
+      "evolutionStage": 2,
+      "height": 1.0,
+      "hasMegaEvolution": false,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+    },
+    {
+      "name": "Venusaur",
+      "pokedexId": 3,
+      "types": ["Grass", "Poison"],
+      "generation": 1,
+      "color": "Green",
+      "evolutionStage": 3,
+      "height": 2.0,
+      "hasMegaEvolution": true,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+    },
+    {
+      "name": "Charmander",
+      "pokedexId": 4,
+      "types": ["Fire"],
+      "generation": 1,
+      "color": "Red",
+      "evolutionStage": 1,
+      "height": 0.6,
+      "hasMegaEvolution": false,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    },
+    {
+      "name": "Charmeleon",
+      "pokedexId": 5,
+      "types": ["Fire"],
+      "generation": 1,
+      "color": "Red",
+      "evolutionStage": 2,
+      "height": 1.1,
+      "hasMegaEvolution": false,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+    },
+    {
+      "name": "Charizard",
+      "pokedexId": 6,
+      "types": ["Fire", "Flying"],
+      "generation": 1,
+      "color": "Red",
+      "evolutionStage": 3,
+      "height": 1.7,
+      "hasMegaEvolution": true,
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    }
+  ]
+  
