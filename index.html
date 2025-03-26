@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PokeWordle</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>PokeWordle</h1>
+  
+  <!-- Instructions -->
+  <div id="instructions" class="instructions">
+    <h2>How to Play</h2>
+    <p>Guess the Pokemon! With each guess you'll get clues based on:</p>
+    <ul>
+      <li><span class="green">Green</span>: Exact match</li>
+      <li><span class="yellow">Yellow</span>: Close match</li>
+      <li><span class="red">Red</span>: No match</li>
+    </ul>
+    <p>Information Availble will be the Pokédex ID, Types, Generation, Color, Evolution Stage, Height, and Mega Evolution.</p>
+    <button id="start-game">Start Game</button>
+  </div>
+  
+  <div id="game-area" style="display: none;">
+    <div class="guess-container">
+      <label for="pokemon-guess">Enter Pokémon name:</label>
+      <input type="text" id="pokemon-guess" placeholder="e.g. Bulbasaur" />
+      <button id="guess-btn">Guess</button>
+    </div>
+
+     <div id="feedback-container"></div>
+    
+   </div>
+  
+  <audio id="whos-that-pokemon" preload="auto">
+    <source src="assets/whos-that-pokemon.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <script src="script.js"></script>
+</body>
+</html>

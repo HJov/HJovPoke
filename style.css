@@ -1,0 +1,292 @@
+/* style */
+ body {
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+  
+h1 {
+  margin-top: 20px;
+}
+
+
+/* Guess Input */
+.guess-container {
+  margin: 20px auto;
+  display: inline-block;
+}
+  
+#pokemon-guess {
+  padding: 8px;
+  font-size: 16px;
+}
+  
+#guess-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Feedback */
+#feedback-container {
+  margin-top: 20px;
+}
+  
+.feedback-row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+  
+.feedback-box {
+  min-width: 100px;
+  padding: 8px;
+  margin: 4px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Feedback based on Color */
+.feedback-box.red {
+  background-color: #e74c3c;
+}
+  
+.feedback-box.yellow {
+  background-color: #f1c40f;
+  color: #000;
+}
+  
+.feedback-box.green {
+  background-color: #2ecc71;
+}
+  
+.sprite-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* Guess History */
+.guess-history {
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #fffde7;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+  
+.history-item {
+  padding: 3px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+  
+.history-item:last-child {
+  border-bottom: none;
+}
+
+/* Instructions */
+.instructions {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.instructions h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+.instructions ul {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.instructions span.green {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.instructions span.yellow {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.instructions span.red {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+#start-game {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#start-game:hover {
+  background-color: #2980b9;
+}
+
+/* Autocomplete */ 
+ .autocomplete-dropdown {
+  position: absolute;
+  max-width: 300px;
+  width: calc(100% - 20px);
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  margin-top: 2px;
+}
+
+.autocomplete-item {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+  background-color: #f0f0f0;
+}
+
+.autocomplete-sprite {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.guess-container {
+  position: relative;
+}
+
+
+/* Guess Counter */
+ .guess-counter {
+  margin: 15px auto;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.counter-title {
+  margin-right: 10px;
+}
+
+.guess-indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.guess-indicator.remaining {
+  background-color: #e0e0e0;
+  border: 2px solid #bdbdbd;
+}
+
+.guess-indicator.used {
+  background-color: #ff5252;
+  border: 2px solid #d32f2f;
+  transform: scale(1.1);
+}
+
+
+
+/* Game over */
+.game-over {
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  max-width: 500px;
+  border-radius: 8px;
+  animation: bounceIn 0.5s ease;
+}
+
+.win-message {
+  color: #2e7d32;
+  font-size: 28px;
+  margin-top: 0;
+}
+
+.lose-message {
+  color: #c62828;
+  font-size: 28px;
+  margin-top: 0;
+}
+
+.reveal-pokemon {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: 15px auto;
+  display: block;
+  animation: revealPokemon 1s ease;
+}
+
+.play-again-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-again-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes revealPokemon {
+  0% { filter: brightness(0); transform: scale(0.8); }
+  50% { filter: brightness(0.5); transform: scale(1.1); }
+  100% { filter: brightness(1); transform: scale(1); }
+}
