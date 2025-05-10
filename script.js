@@ -1487,7 +1487,7 @@ function generateShareText() {
   });
   
   // Add URL to play
-  shareText += '\nPlay at [your-game-url]';
+  shareText += '\nPlay at https://hjov.github.io/HJovPoke/';
   
   return shareText;
 }
