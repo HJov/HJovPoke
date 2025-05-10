@@ -1346,7 +1346,7 @@ h1 {
   padding: 10px 20px;
   border-radius: 30px;
   display: inline-block;
-  margin: 15px auto 30px auto; /* Added more bottom margin */
+  margin: 15px auto 30px auto; 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
