@@ -12,19 +12,33 @@
   <!-- Instructions -->
   <div id="instructions" class="instructions">
     <h2>How to Play</h2>
-    <p>Guess the Pokemon! With each guess you'll get clues based on:</p>
+    <p>Guess the hidden Pokemon! With each guess you'll get clues based on:</p>
     <ul>
       <li><span class="green">Green</span>: Exact match</li>
       <li><span class="yellow">Yellow</span>: Close match</li>
       <li><span class="red">Red</span>: No match</li>
     </ul>
     <p>Information Availble will be the Pokédex ID, Types, Generation, Color, Evolution Stage, Height, and Mega Evolution.</p>
+    
+    <!-- Filters -->
+    <div class="new-feature">
+      <h3>Pokemon Filters!</h3>
+      <p>You can customize the game by filtering Pokemon based on:</p>
+      <ul>
+        <li>Generation (Gen 1-9)</li>
+        <li>Type (Fire, Water, etc.)</li>
+        <li>Color</li>
+        <li>Legendary status</li>
+      </ul>
+      <p>Click the Filter Pokemon button to customize </p>
+    </div>
+    
     <button id="start-game">Start Game</button>
   </div>
   
   <div id="game-area" style="display: none;">
     <div class="guess-container">
-      <label for="pokemon-guess">Enter Pokémon name:</label>
+      <label for="pokemon-guess">Enter Pokemon name:</label>
       <input type="text" id="pokemon-guess" placeholder="e.g. Bulbasaur" />
       <button id="guess-btn">Guess</button>
     </div>
