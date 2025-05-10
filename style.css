@@ -1,4 +1,4 @@
-/* style */
+/* Style */
  body {
   font-family: Arial, sans-serif;
   background: #fafafa;
@@ -12,7 +12,7 @@ h1 {
 }
 
 
-/* Guess Input */
+/* Guess Input  */
 .guess-container {
   margin: 20px auto;
   display: inline-block;
@@ -33,6 +33,8 @@ h1 {
 /* Feedback */
 #feedback-container {
   margin-top: 20px;
+  clear: both; 
+  padding-top: 15px; 
 }
   
 .feedback-row {
@@ -52,7 +54,7 @@ h1 {
   text-align: center;
 }
 
-/* Feedback based on Color */
+/* Feedback based on Color  */
 .feedback-box.red {
   background-color: #e74c3c;
 }
@@ -70,6 +72,39 @@ h1 {
   width: 64px;
   height: 64px;
   object-fit: contain;
+}
+
+/* Hints */
+.hint-button {
+  margin: 15px;
+  padding: 8px 16px;
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+.hint-button:hover {
+  background-color: #7b1fa2;
+}
+  
+.hint-button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+  
+.hint-area {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  font-style: italic;
+}
+  
+.hint-area p {
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #e8eaf6;
+  border-radius: 4px;
 }
 
 /* Guess History */
@@ -141,19 +176,21 @@ h1 {
   background-color: #2980b9;
 }
 
-/* Autocomplete */ 
+/* Autocomplete */
  .autocomplete-dropdown {
   position: absolute;
   max-width: 300px;
   width: calc(100% - 20px);
   max-height: 300px;
   overflow-y: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1050; /* Increased z-index to appear above other elements */
   margin-top: 2px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .autocomplete-item {
@@ -180,6 +217,139 @@ h1 {
   position: relative;
 }
 
+/* Game Instructions */
+ .game-instructions {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  max-width: 400px;
+  font-size: 14px;
+}
+
+.toggle-instructions {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.toggle-instructions span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  color: #3498db;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+}
+
+.toggle-instructions:hover,
+.toggle-instructions.active {
+  background-color: #2980b9;
+}
+
+#instructions-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+#instructions-content h3 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+.instruction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.instruction-grid h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.instruction-grid ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.green-dot, .yellow-dot, .red-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.green-dot { background-color: #2ecc71; }
+.yellow-dot { background-color: #f1c40f; }
+.red-dot { background-color: #e74c3c; }
+
+.instruction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.instruction-table th, 
+.instruction-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.instruction-table th {
+  background-color: #f5f5f5;
+}
+
+.instruction-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.instruction-tip {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 10px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .guess-history {
+    float: none;
+    margin: 20px auto;
+    max-width: 80%;
+  }
+  
+  .guess-container {
+    padding: 15px;
+    margin: 15px auto;
+  }
+  
+  .autocomplete-dropdown {
+    max-width: 90%;
+  }
+}
 
 /* Guess Counter */
  .guess-counter {
@@ -213,7 +383,145 @@ h1 {
   transform: scale(1.1);
 }
 
+/* Help Options */
+.special-help {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #fff3e0;
+  border-radius: 8px;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease;
+}
 
+.special-help h3 {
+  margin-top: 0;
+  color: #e65100;
+}
+
+.special-help-btn {
+  margin: 10px;
+  padding: 8px 16px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.special-help-btn:hover {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+}
+
+.special-help-btn.used,
+.special-help-btn:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Pokemon Silhouette */
+.pokemon-silhouette {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 200px;
+}
+
+.silhouette-heading {
+  color: #7b1fa2;
+  margin-bottom: 10px;
+}
+
+.silhouette-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.silhouette {
+  filter: brightness(0);
+  border: 2px solid #7b1fa2;
+  background-color: #f3e5f5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Category Reveal */
+.category-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  max-width: 90%;
+  width: 400px;
+  animation: scaleIn 0.3s ease;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.category-btn {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-btn:hover {
+  background-color: #303f9f;
+}
+
+.category-close-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-reveal {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #e8f5e9;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: slideIn 0.5s ease;
+}
+
+.category-reveal h3 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+.reveal-info {
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.reveal-value {
+  font-weight: bold;
+  color: #2e7d32;
+}
 
 /* Game over */
 .game-over {
@@ -263,7 +571,7 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Animation */
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -289,4 +597,770 @@ h1 {
   0% { filter: brightness(0); transform: scale(0.8); }
   50% { filter: brightness(0.5); transform: scale(1.1); }
   100% { filter: brightness(1); transform: scale(1); }
+}
+
+
+/* Filter System */
+ .filter-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
+}
+
+.filter-container {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.filter-container h3 {
+  text-align: center;
+  margin-top: 0;
+  color: #3498db;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.filter-section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section p {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.filter-checkbox:hover {
+  transform: translateY(-2px);
+}
+
+.filter-checkbox input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.filter-checkbox label {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#apply-filters {
+  background-color: #3498db;
+  color: white;
+}
+
+#apply-filters:hover {
+  background-color: #2980b9;
+}
+
+#reset-filters {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#reset-filters:hover {
+  background-color: #c0392b;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+.show-filter-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 12px 18px;
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 100;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-filter-button:hover {
+  background-color: #7b1fa2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.show-filter-button:before {
+  content: '🔍';
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+#match-count {
+  background-color: #e8f4fd;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 8px;
+  border-left: 5px solid #3498db;
+  transition: opacity 1.5s ease-out;
+  max-width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#match-count p {
+  margin: 0;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.active-filters-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Type and color label  */
+.filter-checkbox .type-label {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    width: 90%;
+    margin: 10% auto;
+    padding: 15px;
+    max-height: 75vh;
+  }
+  
+  .filter-options {
+    gap: 5px;
+  }
+  
+  .filter-checkbox {
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .filter-checkbox label {
+    font-size: 13px;
+  }
+  
+  .filter-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  
+  .show-filter-button {
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+.share-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #7b1fa2;
+  transform: translateY(-2px);
+}
+
+/* Results sharing  */
+.share-results-display {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(156, 39, 176, 0.9));
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1100;
+  max-width: 90%;
+  width: 500px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.share-results-display h3 {
+  margin-top: 0;
+  color: #ffcb05; 
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.share-results-display pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 5px;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 15px 0;
+  font-family: monospace;
+  line-height: 1.5;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.share-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.share-options button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+#copy-results {
+  background-color: #ffcb05; 
+  color: #333;
+}
+
+#copy-results:hover {
+  background-color: #f1c40f;
+  transform: translateY(-2px);
+}
+
+#close-results {
+  background-color: #e74c3c;
+  color: white;
+}
+
+#close-results:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Base style */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+  background-color: #2196f3; 
+}
+
+.instructions {
+  background-image: url('assets/Pokemon_Intro.jpg'); 
+  background-size: cover;
+  background-position: 30% center; 
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  max-width: 800px;
+  margin: 20px auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.instructions::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 71, 171, 0.6);
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.instructions h2, .instructions h3 {
+  color: #ffcb05; 
+  font-size: 2.2em;
+  margin-bottom: 15px;
+}
+
+.instructions p, .instructions li {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.instructions ul {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.instructions span.green {
+  color: #2ecc71;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.instructions span.yellow {
+  color: #f1c40f;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.instructions span.red {
+  color: #e74c3c;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.new-feature {
+  background-color: rgba(255, 203, 5, 0.2); 
+  border: 2px solid #ffcb05;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 203, 5, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 203, 5, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 203, 5, 0); }
+}
+
+/* Start Game */
+#start-game {
+  padding: 15px 30px;
+  font-size: 22px;
+  background-color: #ffcb05; 
+  color: #1a1a1a;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#start-game:hover {
+  background-color: #e6b800;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#game-area {
+  background-image: url('assets/Pokemon.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-area::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: -1;
+}
+
+/* Title  */
+h1 {
+  margin-top: 20px;
+  color: #ffcb05; 
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  font-size: 3em;
+  padding: 10px 30px;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.7), rgba(33, 150, 243, 0.3));
+  display: inline-block;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Game elements */
+.guess-container {
+  position: relative;
+  background-color: rgba(43, 98, 204, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  z-index: 10; 
+}
+
+.guess-container label {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#pokemon-guess {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#guess-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #ffcb05; 
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#guess-btn:hover {
+  background-color: #e6b800;
+  transform: translateY(-2px);
+}
+
+/* Feedback row  */
+.feedback-row {
+  background-color: rgba(0, 71, 171, 0.7); 
+  border-radius: 12px;
+  padding: 10px;
+  margin: 15px auto;
+  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feedback-box {
+  min-width: 90px;
+  padding: 10px;
+  margin: 5px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-box.red {
+  background-color: rgba(231, 76, 60, 0.9);
+  border: 1px solid #c0392b;
+}
+
+.feedback-box.yellow {
+  background-color: rgba(241, 196, 15, 0.9);
+  color: #000;
+  border: 1px solid #f39c12;
+}
+
+.feedback-box.green {
+  background-color: rgba(46, 204, 113, 0.9);
+  border: 1px solid #27ae60;
+}
+
+/* Hints */
+.hint-button {
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hint-button:hover {
+  background-color: #7b1fa2;
+  transform: translateY(-2px);
+}
+
+.hint-area {
+  background-color: rgba(156, 39, 176, 0.7); 
+  border-radius: 10px;
+  padding: 15px;
+  max-width: 600px;
+  margin: 15px auto;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.hint-area p {
+  margin: 8px 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: white;
+  font-style: italic;
+}
+
+/* Guess history */
+.guess-history {
+  background-color: rgba(255, 235, 59, 0.7);
+  border-radius: 10px;
+  padding: 15px;
+  max-width: 200px;
+  margin: 20px 20px 20px auto; 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  float: right; 
+  clear: right; 
+}
+
+.guess-history h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+.history-item {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+/* Game over  */
+.game-over {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(156, 39, 176, 0.8));
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  max-width: 500px;
+  margin: 30px auto;
+  color: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: bounceIn 0.5s ease;
+}
+
+.win-message {
+  color: #ffcb05; 
+  font-size: 32px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lose-message {
+  color: #ff5252;
+  font-size: 32px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.reveal-pokemon {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 20px auto;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+  animation: revealPokemon 1s ease;
+}
+
+.game-instructions {
+  background-color: rgba(33, 150, 243, 0.7);
+  color: white;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#instructions-content {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.category-modal,
+.filter-modal {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.category-reveal,
+.special-help {
+  background-color: rgba(76, 175, 80, 0.7);
+  color: white;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.filter-container, 
+.share-results-display {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(156, 39, 176, 0.8));
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+}
+
+/* Autocomplete */
+.autocomplete-dropdown {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Guess counter */
+.guess-counter {
+  background-color: rgba(33, 150, 243, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  margin: 15px auto 30px auto; /* Added more bottom margin */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.instruction-table th, 
+.instruction-table td {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.instruction-table th {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.instruction-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
 }
